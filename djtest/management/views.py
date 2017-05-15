@@ -9,7 +9,16 @@ import time
 
 
 def JoinNode(request):
-    p2p.P2PJoinStart((request.GET.get('ip','127.0.0.1'),int(request.GET.get('port','8001'))))
+    ip=port=""
+    try:
+        ip=request.GET["ip"]
+    except:
+        ip="127.0.0.1"
+    try:
+        port=request.GET["port"]
+    except:
+        port="8001"
+    p2p.P2PJoinStart((ip,int(port)))
     return HttpResponse("JoinNode")
 
 def send(request):
