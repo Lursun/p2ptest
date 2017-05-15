@@ -3,6 +3,7 @@ import socket
 import threading
 import thread
 import time
+import os
 from struct import *
 from pprint import pprint
 from p2ptest.message import message as message_module
@@ -84,7 +85,7 @@ def P2PNetworkStart():
     PORT=""
 
     try:
-        PORT=os.environ.get["P2P_PORT","8001"]
+        PORT=os.environ["P2P_PORT"]
     except:
         PORT=8001
     print("p2p listen port:"+str(PORT))
